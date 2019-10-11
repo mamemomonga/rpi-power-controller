@@ -140,7 +140,7 @@ void do_action(void) {
 	case ACTION_OK_PI:
 		// トグルスイッチOFFなら電源遮断開始
 		if(SW_OFF) {
-			LED_SLOW;
+			LED_FAST;
 			// Piにシャットダウンを指示
 			PI_ST_H;
 			// タイムアウトをリセット
@@ -153,7 +153,7 @@ void do_action(void) {
 		if(PI_IS_OFF) {
 			// 電源オフ
 			PWR_OFF;
-			LED_FAST;
+			LED_ULTRAFAST;
 			_delay_ms(5000);
 			// トグルスイッチがONのままならば、5秒後に再度電源が入る
 			action = ACTION_SLEEP;
