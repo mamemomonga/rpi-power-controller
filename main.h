@@ -16,7 +16,10 @@
 // PiがONである(IN:Active High)
 // dtoverlay=gpio-poweroff,gpiopin=27,active_low="y"
 #define PI_ON ( 1<<PB3 )
-#define PI_ON_INIT { DDRB &=~ PI_ON; PORTB &=~PI_ON; }
+
+// #define PI_ON_INIT { DDRB &=~ PI_ON; PORTB &=~PI_ON; }
+#define PI_ON_INIT { DDRB &=~ PI_ON; PORTB |= PI_ON; } // PULLUP
+
 #define PI_ON_IS_H ( PINB & PI_ON )
 #define PI_IS_ON   ( PI_ON_IS_H )
 #define PI_IS_OFF  ( ! PI_ON_IS_H )
@@ -47,7 +50,10 @@
 // PI状態 (IN:Active High)
 // シャットダウン指令 (OUT:Active High)
 #define PI_ST ( 1<<PB0 )
-#define PI_ST_IN   { DDRB &=~ PI_ST; PORTB &=~PI_ST; }
+
+// #define PI_ST_IN   { DDRB &=~ PI_ST; PORTB &=~PI_ST; }
+#define PI_ST_IN   { DDRB &=~ PI_ST; PORTB |= PI_ST; } // PULLUP
+
 #define PI_ST_IS_H ( PINB & PI_ST )
 #define PI_ST_OUT DDRB  |=  PI_ST
 #define PI_ST_H   PORTB |=  PI_ST
