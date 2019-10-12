@@ -2,6 +2,7 @@
 
 * トグルスイッチでラズベリーパイの起動・終了を行う回路です。
 * Raspberry PiへはGPIO +5Vから電源を供給します。
+* 2SK681では、On抵抗(0.12Ω)の関係で、Raspberry Pi2以降では電圧降下が起きます。
 
 ## 起動シーケンス
 
@@ -38,6 +39,5 @@ Raspbian用
 
 # 制作時の留意点
 
-* RPi3以降の機種は電圧降下(電源抵抗)にシビアです。Pch MOSFETと電源の配線は太い配線で最短距離でおこなってください。
-* GPIO給電の場合USB電源部分に搭載されているポリスイッチや理想ダイオードがバイパスされる機種があります。
-* 安定した利用には、[Raspberry Pi 回路図](https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/README.md) を参考にして、USB電源部近くのランドに半田付けなどをおすすめします。
+* RPi3以降の機種は電圧降下(電源抵抗)にシビアです。Pch MOSFETは低いオン抵抗のものを使い、電源の配線は太い配線で最短距離でおこなってください。
+* GPIO給電の場合USB電源部分に搭載されているポリスイッチや理想ダイオードがバイパスされる機種があります。[Raspberry Pi 回路図](https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/README.md) を参考にしてください。
